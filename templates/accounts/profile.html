@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block title %}Мой профиль — Чертежи{% endblock %}
+{% block content %}
+<section class="card">
+<h1>Мой профиль</h1>
+<p>Укажите, как с вами связаться для передачи готовых чертежей. Автоматическая отправка пока недоступна.</p>
+<form method="post">{% csrf_token %}{% include "accounts/fields.html" %}<button>Сохранить профиль</button></form>
+<p class="help">При смене email следующий вход будет по новому адресу. Подтверждение адреса письмом пока не требуется.</p>
+</section>
+{% endblock %}

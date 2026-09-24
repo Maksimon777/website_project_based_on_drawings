@@ -28,6 +28,7 @@ INSTALLED_APPS = [
     "accounts", "orders", "core",
 ]
 MIDDLEWARE = [
+    "accounts.middleware.AccountDatabaseErrorMiddleware",
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
@@ -60,6 +61,10 @@ DATABASES = {"default": {
     "OPTIONS": {"connect_timeout": DATABASE_CONNECT_TIMEOUT_SECONDS},
 }}
 AUTH_USER_MODEL = "accounts.User"
+AUTHENTICATION_BACKENDS = ["accounts.backends.EmailBackend", "django.contrib.auth.backends.ModelBackend"]
+LOGIN_URL = "accounts:login"
+LOGIN_REDIRECT_URL = "accounts:profile"
+LOGOUT_REDIRECT_URL = "home"
 AUTH_PASSWORD_VALIDATORS = [
     {"NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator"},
     {"NAME": "django.contrib.auth.password_validation.MinimumLengthValidator"},
@@ -85,5 +90,6 @@ LOGGING = {
     "loggers": {
         "django": {"handlers": ["console"], "level": "WARNING", "propagate": False},
         "core": {"handlers": ["console"], "level": "INFO", "propagate": False},
+        "accounts": {"handlers": ["console"], "level": "INFO", "propagate": False},
     },
 }

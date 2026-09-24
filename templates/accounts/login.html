@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block title %}Вход — Чертежи{% endblock %}
+{% block content %}
+<section class="card">
+<h1>Войти</h1>
+<form method="post">
+{% csrf_token %}{% include "accounts/fields.html" %}
+{% if next %}<input type="hidden" name="next" value="{{ next }}">{% endif %}
+<button>Войти</button>
+</form>
+<p>Нет аккаунта? <a href="{% url 'accounts:register' %}">Зарегистрироваться</a></p>
+</section>
+{% endblock %}
