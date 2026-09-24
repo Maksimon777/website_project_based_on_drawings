@@ -1,17 +1,12 @@
-{% load static %}
-<!doctype html>
-<html lang="ru">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Чертежи</title>
-    <link rel="stylesheet" href="{% static 'css/site.css' %}">
-</head>
-<body>
-    <main>
-        <p class="label">ЧЕРТЕЖИ</p>
-        <h1>Сервис заказов на чертежи</h1>
-        <p>Сервис находится в разработке. Создание заказов пока недоступно.</p>
-    </main>
-</body>
-</html>
+{% extends "base.html" %}
+{% block content %}
+<p class="label">ИНЖЕНЕРНАЯ ГРАФИКА</p>
+<h1>Сервис заказов на чертежи</h1>
+<p>Создайте аккаунт и укажите удобный способ получения результата.</p>
+{% if user.is_authenticated %}
+<a class="button" href="{% url 'accounts:profile' %}">Открыть профиль</a>
+{% else %}
+<a class="button" href="{% url 'accounts:register' %}">Создать аккаунт</a>
+{% endif %}
+<p class="help">Создание заказов находится в разработке.</p>
+{% endblock %}

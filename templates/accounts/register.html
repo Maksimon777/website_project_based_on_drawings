@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block title %}Регистрация — Чертежи{% endblock %}
+{% block content %}
+<section class="card">
+<h1>Создать аккаунт</h1>
+<p>Укажите email для входа и получения готовых чертежей. Telegram можно добавить позже.</p>
+<form method="post">{% csrf_token %}{% include "accounts/fields.html" %}<button>Зарегистрироваться</button></form>
+<p>Уже есть аккаунт? <a href="{% url 'accounts:login' %}">Войти</a></p>
+</section>
+{% endblock %}

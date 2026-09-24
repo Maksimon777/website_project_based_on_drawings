@@ -1,4 +1,23 @@
-body { margin: 0; background: #f5f6f8; color: #182433; font: 18px/1.6 system-ui, sans-serif; }
-main { max-width: 760px; margin: 12vh auto; padding: 32px; }
-h1 { font-size: clamp(30px, 6vw, 48px); line-height: 1.15; }
-.label { font-weight: 700; letter-spacing: .15em; color: #385b91; }
+* { box-sizing: border-box; }
+body { margin: 0; background: #f5f6f8; color: #182433; font: 17px/1.6 system-ui, sans-serif; }
+header { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 20px max(20px, calc((100% - 1000px)/2)); background: white; border-bottom: 1px solid #dfe3e9; }
+nav { display: flex; flex-wrap: wrap; align-items: center; gap: 16px; }
+nav form { margin: 0; }
+a { color: #234f91; }
+.brand { font-weight: 800; letter-spacing: .12em; text-decoration: none; }
+main { max-width: 820px; margin: 6vh auto; padding: 24px; }
+h1 { font-size: clamp(28px, 5vw, 44px); line-height: 1.2; margin-top: 0; }
+.label { font-weight: 700; letter-spacing: .12em; color: #385b91; }
+.card { max-width: 620px; margin: auto; padding: 32px; background: white; border: 1px solid #dfe3e9; border-radius: 14px; }
+.field { margin: 20px 0; }
+label { display: block; font-weight: 600; margin-bottom: 6px; }
+input, select { display: block; width: 100%; padding: 11px; font: inherit; border: 1px solid #8996a8; border-radius: 6px; background: white; }
+input:focus, select:focus { outline: 3px solid #adc9f2; outline-offset: 1px; }
+button, .button { display: inline-block; cursor: pointer; padding: 11px 20px; border: 0; border-radius: 6px; background: #234f91; color: white; font: inherit; text-decoration: none; }
+.secondary { background: #eaf0f9; color: #234f91; padding: 6px 12px; }
+.help { color: #526173; font-size: 14px; margin-top: 6px; }
+.help ul { padding-left: 20px; }
+.errorlist { color: #a21c22; padding-left: 20px; }
+.error-summary { border-left: 4px solid #a21c22; padding: 4px 12px; background: #fff1f1; }
+.notice { padding: 14px; background: #e5f4e9; border: 1px solid #8cbb98; border-radius: 6px; }
+@media (max-width: 540px) { header { align-items: flex-start; flex-direction: column; } main { margin: 24px auto; padding: 16px; } .card { padding: 20px; } }
