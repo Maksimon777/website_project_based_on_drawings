@@ -91,5 +91,6 @@ LOGGING = {
         "django": {"handlers": ["console"], "level": "WARNING", "propagate": False},
         "core": {"handlers": ["console"], "level": "INFO", "propagate": False},
         "accounts": {"handlers": ["console"], "level": "INFO", "propagate": False},
+        "orders": {"handlers": ["console"], "level": "INFO", "propagate": False},
     },
 }

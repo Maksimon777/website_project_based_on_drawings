@@ -12,6 +12,7 @@
     <a class="brand" href="{% url 'home' %}">ЧЕРТЕЖИ</a>
     <nav aria-label="Главное меню">
         {% if user.is_authenticated %}
+            <a href="{% url 'orders:list' %}">Мои заказы</a>
             <a href="{% url 'accounts:profile' %}">Мой профиль</a>
             <form method="post" action="{% url 'accounts:logout' %}">{% csrf_token %}<button class="secondary">Выйти</button></form>
         {% else %}
