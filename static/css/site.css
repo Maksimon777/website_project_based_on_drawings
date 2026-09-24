@@ -21,3 +21,19 @@ button, .button { display: inline-block; cursor: pointer; padding: 11px 20px; bo
 .error-summary { border-left: 4px solid #a21c22; padding: 4px 12px; background: #fff1f1; }
 .notice { padding: 14px; background: #e5f4e9; border: 1px solid #8cbb98; border-radius: 6px; }
 @media (max-width: 540px) { header { align-items: flex-start; flex-direction: column; } main { margin: 24px auto; padding: 16px; } .card { padding: 20px; } }
+textarea { width: 100%; padding: 11px; font: inherit; border: 1px solid #8996a8; border-radius: 6px; resize: vertical; }
+textarea:focus { outline: 3px solid #adc9f2; }
+input[type=checkbox] { display: inline-block; width: auto; margin-right: 8px; }
+.field-error input, .field-error select, .field-error textarea { border: 2px solid #a21c22; }
+.field-error [id$="_output_formats"] { border: 2px solid #a21c22; border-radius: 6px; padding: 10px; }
+.required-mark { color: #a21c22; }
+.field > label { display: inline-block; margin-right: 4px; }
+.wide { max-width: 100%; }
+.heading-row, .actions { display: flex; flex-wrap: wrap; align-items: center; gap: 16px; }
+.heading-row { justify-content: space-between; margin-bottom: 24px; }
+.order-card { padding: 20px; background: white; border: 1px solid #dfe3e9; border-radius: 10px; margin-bottom: 16px; overflow-wrap: anywhere; }
+.order-card h2 { font-size: 22px; }
+.badge { display: inline-block; background: #eaf0f9; color: #234f91; padding: 4px 10px; border-radius: 6px; }
+dt { font-weight: 700; margin-top: 16px; }
+dd { margin-left: 0; white-space: normal; overflow-wrap: anywhere; }
+li a, h1 { overflow-wrap: anywhere; }

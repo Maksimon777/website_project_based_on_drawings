@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %}Заказ №{{ order.pk }} — Чертежи{% endblock %}
+{% block content %}
+<a href="{% url 'orders:list' %}">← Мои заказы</a>
+<p class="label">ЗАКАЗ №{{ order.pk }}</p>
+<h1>{{ order.title }}</h1>
+<p><span class="badge">{{ order.get_status_display }}</span></p>
+{% if order.feedback and order.status == "needs_info" %}
+<aside class="notice"><strong>Нужно дополнить информацию:</strong><p>{{ order.feedback|linebreaksbr }}</p></aside>
+{% endif %}
+<dl>
+<dt>Категория</dt><dd>{{ order.get_category_display }}</dd>
+<dt>Срок</dt><dd>{{ order.deadline|date:"d.m.Y" }}</dd>
+<dt>Форматы результата</dt><dd>{{ order.output_labels }}{% if order.other_format %} — {{ order.other_format }}{% endif %}</dd>
+<dt>Описание задания</dt><dd>{{ order.description|linebreaksbr }}</dd>
+<dt>Требования преподавателя</dt><dd>{{ order.teacher_requirements|default:"Не указаны"|linebreaksbr }}</dd>
+</dl>
+{% if can_edit %}
+<div class="actions">
+<a class="button" href="{% url 'orders:edit' order.pk %}">Редактировать и добавить файлы</a>
+<form method="post" action="{% url 'orders:cancel' order.pk %}">{% csrf_token %}<button class="secondary">Отменить заказ</button></form>
+</div>
+{% else %}<p class="help">Редактирование закрыто. Оно станет доступно, если команда вернёт заказ на уточнение.</p>{% endif %}
+<h2>Исходные файлы</h2>
+<ul>{% for attachment in files %}
+<li><a href="{% url 'orders:download' attachment.pk %}">{{ attachment.original_name }}</a> <span class="help">({{ attachment.size|filesizeformat }})</span></li>
+{% empty %}<li>Файлы не приложены.</li>{% endfor %}</ul>
+<h2>История статусов</h2>
+<ol>{% for entry in history %}
+<li><strong>{{ entry.get_new_status_display }}</strong> · {{ entry.created_at|date:"d.m.Y H:i" }}{% if entry.note %}<p>{{ entry.note|linebreaksbr }}</p>{% endif %}</li>
+{% endfor %}</ol>
+{% endblock %}

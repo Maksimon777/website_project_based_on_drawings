@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+{% block title %}Действие недоступно — Чертежи{% endblock %}
+{% block content %}
+<h1>Действие недоступно</h1>
+<p>{{ reason|default:"Заказ принят в обработку. Редактирование доступно только до обработки или после возврата на уточнение." }}</p>
+<a class="button" href="{% url 'orders:detail' order.pk %}">Вернуться к заказу</a>
+{% endblock %}

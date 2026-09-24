@@ -10,7 +10,7 @@ logger = logging.getLogger(__name__)
 
 class AccountDatabaseErrorMiddleware(MiddlewareMixin):
     def process_exception(self, request, exception):
-        if request.path.startswith("/accounts/") and isinstance(exception, DatabaseError):
+        if request.path.startswith(("/accounts/", "/orders/")) and isinstance(exception, (DatabaseError, OSError)):
             logger.error("Account operation failed (%s)", type(exception).__name__)
             # A standalone response avoids querying the unavailable session database again.
             response = HttpResponse(

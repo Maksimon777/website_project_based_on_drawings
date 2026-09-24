@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}{% if order %}Редактировать заказ{% else %}Новый заказ{% endif %} — Чертежи{% endblock %}
+{% block content %}
+<section class="card wide">
+<h1>{% if order %}Редактировать заказ №{{ order.pk }}{% else %}Новый заказ{% endif %}</h1>
+<p>Поля со звёздочкой обязательны. Файлы можно не прикладывать, если описание содержит всё задание.</p>
+{% if order.feedback %}<aside class="notice"><strong>Уточнение от команды:</strong><p>{{ order.feedback|linebreaksbr }}</p></aside>{% endif %}
+<form method="post" enctype="multipart/form-data" novalidate>
+{% csrf_token %}{% include "accounts/fields.html" %}
+<p class="help">Файлы: PDF, JPG/PNG, DOCX, ZIP, DWG/DXF, КОМПАС (CDW, FRW, M3D, A3D, SPW). Существующие вложения сохраняются, новые добавляются к ним.</p>
+<button>{% if order %}Сохранить и отправить{% else %}Отправить заказ{% endif %}</button>
+<a href="{% url 'orders:list' %}">Мои заказы</a>
+</form>
+</section>
+{% endblock %}

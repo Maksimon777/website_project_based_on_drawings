@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}Мои заказы — Чертежи{% endblock %}
+{% block content %}
+<div class="heading-row"><h1>Мои заказы</h1><a class="button" href="{% url 'orders:create' %}">Создать заказ</a></div>
+{% for order in page %}
+<article class="order-card">
+    <p class="help">№{{ order.pk }} · {{ order.created_at|date:"d.m.Y H:i" }}</p>
+    <h2><a href="{% url 'orders:detail' order.pk %}">{{ order.title }}</a></h2>
+    <span class="badge">{{ order.get_status_display }}</span>
+    <p>Срок: {{ order.deadline|date:"d.m.Y" }}</p>
+</article>
+{% empty %}<p>Заказов пока нет. Создайте первый заказ и приложите задание.</p>{% endfor %}
+{% if page.has_other_pages %}<nav aria-label="Страницы заказов">
+{% if page.has_previous %}<a href="?page={{ page.previous_page_number }}">Назад</a>{% endif %}
+<span>{{ page.number }} / {{ page.paginator.num_pages }}</span>
+{% if page.has_next %}<a href="?page={{ page.next_page_number }}">Далее</a>{% endif %}
+</nav>{% endif %}
+{% endblock %}
