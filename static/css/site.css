@@ -1,0 +1,4 @@
+body { margin: 0; background: #f5f6f8; color: #182433; font: 18px/1.6 system-ui, sans-serif; }
+main { max-width: 760px; margin: 12vh auto; padding: 32px; }
+h1 { font-size: clamp(30px, 6vw, 48px); line-height: 1.15; }
+.label { font-weight: 700; letter-spacing: .15em; color: #385b91; }
